@@ -1,0 +1,12 @@
+---
+
+- name: Ensure packages are available for tasks
+  package:
+    state: installed
+    name: "{{ item }}"
+  loop:
+    - libguestfs-tools
+    - python-lxml
+    - python-netaddr
+  delegate_to: "{{ kvm_host }}"
+  run_once: true
